@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Alumni</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">🎓</div>
+
+        <span>Alumni Hub</span>
+
+    </div>
+
+
+    <div class="nav-menu">
+
+        <a href="{{ url_for('index') }}">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="{{ url_for('alumni') }}"
+           class="active">
+
+            <span class="nav-icon">👥</span>
+            <span>Alumni</span>
+
+        </a>
+
+        <a href="{{ url_for('add_alumni') }}">
+            <span class="nav-icon">➕</span>
+            <span>Register</span>
+        </a>
+
+        <a href="{{ url_for('events') }}">
+            <span class="nav-icon">📅</span>
+            <span>Events</span>
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div class="page-title">
+
+            <h1>Edit Alumni ✏️</h1>
+
+            <p>Update alumni information.</p>
+
+        </div>
+
+        <div class="avatar">TA</div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <h2>🔧 Update Information</h2>
+
+        </div>
+
+
+        <form method="POST"
+              action="{{ url_for('edit_alumni') }}">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group full">
+
+                    <label>Alumni ID</label>
+
+                    <input
+                        type="text"
+                        name="alu_id"
+                        placeholder="Example: A1TAAN1234"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>First Name</label>
+
+                    <input
+                        type="text"
+                        name="first_name"
+                        placeholder="First name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Last Name</label>
+
+                    <input
+                        type="text"
+                        name="last_name"
+                        placeholder="Last name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Mobile</label>
+
+                    <input
+                        type="text"
+                        name="mobile"
+                        placeholder="Mobile number">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Company</label>
+
+                    <input
+                        type="text"
+                        name="company"
+                        placeholder="Company">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Designation</label>
+
+                    <input
+                        type="text"
+                        name="designation"
+                        placeholder="Designation">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Current City</label>
+
+                    <input
+                        type="text"
+                        name="city"
+                        placeholder="City">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Branch</label>
+
+                    <select name="branch">
+
+                        <option value="">Select branch</option>
+
+                        <option>CSE</option>
+                        <option>IT</option>
+                        <option>ECE</option>
+                        <option>ME</option>
+                        <option>CE</option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+
+                    💾 Save Changes
+
+                </button>
+
+
+                <a
+                    href="{{ url_for('alumni') }}"
+                    class="btn btn-secondary">
+
+                    ↩ Back
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

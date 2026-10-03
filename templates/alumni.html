@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Alumni Directory</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">🎓</div>
+
+        <span>Alumni Hub</span>
+
+    </div>
+
+
+    <div class="nav-menu">
+
+        <a href="{{ url_for('index') }}">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+
+        <a href="{{ url_for('dashboard') }}">
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="{{ url_for('alumni') }}"
+           class="active">
+
+            <span class="nav-icon">👥</span>
+            <span>Alumni</span>
+
+        </a>
+
+        <a href="{{ url_for('add_alumni') }}">
+            <span class="nav-icon">➕</span>
+            <span>Register</span>
+        </a>
+
+        <a href="{{ url_for('events') }}">
+            <span class="nav-icon">📅</span>
+            <span>Events</span>
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div class="page-title">
+
+            <h1>Alumni Directory 👥</h1>
+
+            <p>Find and manage your alumni community.</p>
+
+        </div>
+
+        <div class="user-box">
+
+            <div class="notification">🔔</div>
+            <div class="avatar">TA</div>
+
+        </div>
+
+    </div>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% for category, message in messages %}
+
+            <div class="flash {{ category }}">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    {% endwith %}
+
+
+    <div class="page-header">
+
+        <h1>All Alumni</h1>
+
+        <a href="{{ url_for('add_alumni') }}"
+           class="btn btn-primary">
+
+            ➕ Add Alumni
+
+        </a>
+
+    </div>
+
+
+    <form class="search-box"
+          method="GET"
+          action="{{ url_for('alumni') }}">
+
+        <input
+            type="text"
+            name="search"
+            value="{{ search }}"
+            placeholder="🔍 Search by name, company, branch or city..."
+        >
+
+        <button class="btn btn-primary"
+                type="submit">
+
+            Search
+
+        </button>
+
+    </form>
+
+
+    <div class="card">
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Alumni</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Company</th>
+                    <th>Branch</th>
+                    <th>City</th>
+                    <th>Actions</th>
+
+                </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                {% for alumni in alumni_list %}
+
+                <tr>
+
+                    <td>
+                        <strong>{{ alumni[0] }}</strong>
+                    </td>
+
+
+                    <td>
+
+                        👤 {{ alumni[1] }}
+                        {{ alumni[2] }}
+
+                    </td>
+
+
+                    <td>
+                        {{ alumni[7] }}
+                    </td>
+
+
+                    <td>
+                        {{ alumni[8] }}
+                    </td>
+
+
+                    <td>
+                        🏢 {{ alumni[10] }}
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge">
+                            {{ alumni[14] }}
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        📍 {{ alumni[9] }}
+                    </td>
+
+
+                    <td>
+
+                        <a href="{{ url_for('edit_alumni') }}"
+                           class="btn btn-secondary">
+
+                            ✏️
+
+                        </a>
+
+
+                        <a href="{{ url_for('delete_alumni',
+                                            alu_id=alumni[0]) }}"
+                           class="btn btn-danger"
+                           onclick="return confirm('Delete this alumni?')">
+
+                            🗑️
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="8"
+                        style="text-align:center;padding:40px;">
+
+                        👥 No alumni records found.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        🎓 Alumni Hub © 2026
+
+    </footer>
+
+</div>
+
+</body>
+
+</html>

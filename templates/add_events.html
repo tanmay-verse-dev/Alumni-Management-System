@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Event | AlumniHub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        AlumniHub
+    </div>
+
+    <ul class="menu">
+
+        <li>
+            <a href="{{ url_for('dashboard') }}">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('alumni') }}">
+                <i class="fa-solid fa-users"></i>
+                Alumni
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('add_alumni') }}">
+                <i class="fa-solid fa-user-plus"></i>
+                Add Alumni
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('events') }}">
+                <i class="fa-solid fa-calendar-days"></i>
+                Events
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="{{ url_for('add_event') }}">
+                <i class="fa-solid fa-calendar-plus"></i>
+                Add Event
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <div>
+            <h1>Create New Event 🎉</h1>
+            <p>Organize a new alumni event.</p>
+        </div>
+
+    </div>
+
+
+    <div class="form-container">
+
+        <form method="POST">
+
+            <h2>
+                <i class="fa-solid fa-calendar-plus"></i>
+                Event Information
+            </h2>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Event Name</label>
+
+                    <input
+                        type="text"
+                        name="event_name"
+                        placeholder="Enter event name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Event Date</label>
+
+                    <input
+                        type="date"
+                        name="event_date"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Venue</label>
+
+                    <input
+                        type="text"
+                        name="venue"
+                        placeholder="Enter event venue"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select name="status">
+
+                        <option value="Upcoming">
+                            Upcoming
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                        <option value="Cancelled">
+                            Cancelled
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="reset"
+                    class="cancel-btn">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Reset
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    <i class="fa-solid fa-calendar-plus"></i>
+                    Create Event
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

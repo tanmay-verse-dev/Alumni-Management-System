@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Alumni Hub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">🎓</div>
+
+        <span>Alumni Hub</span>
+
+    </div>
+
+
+    <div class="nav-menu">
+
+        <a href="{{ url_for('index') }}"
+           class="active">
+
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+
+        </a>
+
+
+        <a href="{{ url_for('dashboard') }}">
+
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="{{ url_for('alumni') }}">
+
+            <span class="nav-icon">👥</span>
+            <span>Alumni</span>
+
+        </a>
+
+
+        <a href="{{ url_for('add_alumni') }}">
+
+            <span class="nav-icon">➕</span>
+            <span>Register</span>
+
+        </a>
+
+
+        <a href="{{ url_for('events') }}">
+
+            <span class="nav-icon">📅</span>
+            <span>Events</span>
+
+        </a>
+
+    </div>
+
+
+    <div class="sidebar-bottom">
+
+        <a class="logout" href="{{ url_for('index') }}">
+
+            <span>🚪</span>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div class="page-title">
+
+            <h1>Alumni Hub 🎓</h1>
+
+            <p>Connect. Grow. Inspire.</p>
+
+        </div>
+
+
+        <div class="user-box">
+
+            <div class="notification">
+                🔔
+            </div>
+
+            <div class="avatar">
+                TA
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="welcome">
+
+        <div class="welcome-circle"></div>
+
+        <h2>Welcome to Alumni Hub! 👋</h2>
+
+        <p>
+            A simple and powerful platform to manage,
+            connect and celebrate your alumni community.
+        </p>
+
+        <br>
+
+        <a href="{{ url_for('dashboard') }}"
+           class="btn btn-primary"
+           style="background:white;color:#6235ff;">
+
+            🚀 Explore Dashboard
+
+        </a>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon purple">
+                👥
+            </div>
+
+            <h3>250+</h3>
+
+            <p>Registered Alumni</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+                🎓
+            </div>
+
+            <h3>15+</h3>
+
+            <p>Branches</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon pink">
+                🏢
+            </div>
+
+            <h3>80+</h3>
+
+            <p>Companies</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+                📅
+            </div>
+
+            <h3>20+</h3>
+
+            <p>Events</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-grid">
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>🌟 Why Alumni Hub?</h2>
+
+            </div>
+
+            <p style="line-height:1.8;color:#777;">
+
+                Alumni Hub makes it easy to maintain alumni
+                records, organize events, search for graduates
+                and build a strong professional community.
+
+            </p>
+
+            <br>
+
+            <a href="{{ url_for('add_alumni') }}"
+               class="btn btn-primary">
+
+                ➕ Register New Alumni
+
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>✨ Quick Actions</h2>
+
+            </div>
+
+            <a href="{{ url_for('alumni') }}"
+               class="btn btn-secondary"
+               style="width:100%;margin-bottom:10px;">
+
+                👥 View Alumni
+
+            </a>
+
+            <a href="{{ url_for('events') }}"
+               class="btn btn-secondary"
+               style="width:100%;">
+
+                📅 View Events
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        🎓 Alumni Hub © 2026 |
+        Developed by Tanmay Awasthi
+
+    </footer>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Alumni Hub</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">🎓</div>
+
+        <span>Alumni Hub</span>
+
+    </div>
+
+
+    <div class="nav-menu">
+
+        <a href="{{ url_for('index') }}">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+
+        <a href="{{ url_for('dashboard') }}"
+           class="active">
+
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+
+        </a>
+
+        <a href="{{ url_for('alumni') }}">
+
+            <span class="nav-icon">👥</span>
+            <span>Alumni</span>
+
+        </a>
+
+        <a href="{{ url_for('add_alumni') }}">
+
+            <span class="nav-icon">➕</span>
+            <span>Register</span>
+
+        </a>
+
+        <a href="{{ url_for('events') }}">
+
+            <span class="nav-icon">📅</span>
+            <span>Events</span>
+
+        </a>
+
+    </div>
+
+
+    <div class="sidebar-bottom">
+
+        <a class="logout"
+           href="{{ url_for('index') }}">
+
+            <span>🚪</span>
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div class="page-title">
+
+            <h1>Dashboard 📊</h1>
+
+            <p>Your alumni community at a glance.</p>
+
+        </div>
+
+
+        <div class="user-box">
+
+            <div class="notification">🔔</div>
+
+            <div class="avatar">TA</div>
+
+        </div>
+
+    </div>
+
+
+    <div class="welcome">
+
+        <div class="welcome-circle"></div>
+
+        <h2>Welcome back, Admin! 👋</h2>
+
+        <p>
+            Here's what's happening in your alumni community today.
+        </p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon purple">👥</div>
+
+            <h3>{{ total_alumni }}</h3>
+
+            <p>Total Alumni</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">📅</div>
+
+            <h3>{{ total_events }}</h3>
+
+            <p>Total Events</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon pink">🏢</div>
+
+            <h3>{{ total_companies }}</h3>
+
+            <p>Companies</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">🎓</div>
+
+            <h3>{{ total_branches }}</h3>
+
+            <p>Branches</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="content-grid">
+
+
+        <!-- RECENT ALUMNI -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>👥 Recent Alumni</h2>
+
+                <a href="{{ url_for('alumni') }}"
+                   class="view-link">
+
+                    View All →
+
+                </a>
+
+            </div>
+
+
+            {% for alumni in recent_alumni %}
+
+            <div class="alumni-row">
+
+                <div class="alumni-info">
+
+                    <div class="small-avatar">
+
+                        {{ alumni[1][0] | upper }}
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="alumni-name">
+
+                            {{ alumni[1] }} {{ alumni[2] }}
+
+                        </div>
+
+                        <div class="alumni-company">
+
+                            {{ alumni[3] or "Company not provided" }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <span class="badge">
+
+                    {{ alumni[4] or "N/A" }}
+
+                </span>
+
+            </div>
+
+            {% else %}
+
+            <p style="color:#888;">
+                No alumni records found.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- EVENTS -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h2>📅 Upcoming Events</h2>
+
+                <a href="{{ url_for('events') }}"
+                   class="view-link">
+
+                    View All →
+
+                </a>
+
+            </div>
+
+
+            {% for event in upcoming_events %}
+
+            <div class="event">
+
+                <div class="event-date">
+
+                    <strong>
+                        {{ event[1].strftime('%d') }}
+                    </strong>
+
+                    <span>
+                        {{ event[1].strftime('%b') }}
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <h3>{{ event[0] }}</h3>
+
+                    <p>📍 {{ event[2] }}</p>
+
+                    <p>🔵 {{ event[3] }}</p>
+
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <p style="color:#888;">
+                No upcoming events.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        🎓 Alumni Hub © 2026 | Developed by Tanmay Awasthi
+    </footer>
+
+</div>
+
+</body>
+
+</html>
